@@ -1,9 +1,14 @@
+import os
 import urllib
 import pandas as pd
+from dotenv import load_dotenv
 from sqlalchemy import create_engine, inspect
 
-server = r"BOOK-2I9O875IH1\SQLEXPRESS"
-database = "Live"  # Replace with your database name
+# Load variables from the .env file
+load_dotenv()
+
+server = os.getenv("DB_SERVER")
+database = os.getenv("DB_NAME")
 
 # Builds the ODBC connection string using Windows Authentication
 params = urllib.parse.quote_plus(
